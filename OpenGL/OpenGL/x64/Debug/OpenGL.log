@@ -1,0 +1,17 @@
+﻿  main.cpp
+main.obj : error LNK2019: 无法解析的外部符号 glfwInit，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwTerminate，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwWindowHint，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwCreateWindow，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwWindowShouldClose，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwSetWindowShouldClose，该符号在函数 "void __cdecl ProcessInput(struct GLFWwindow *)" (?ProcessInput@@YAXPEAUGLFWwindow@@@Z) 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwSetWindowSizeCallback，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwPollEvents，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwGetKey，该符号在函数 "void __cdecl ProcessInput(struct GLFWwindow *)" (?ProcessInput@@YAXPEAUGLFWwindow@@@Z) 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwMakeContextCurrent，该符号在函数 "public: __cdecl <lambda_2c254713ac22268a38cefe1aab754c37>::operator()<struct GLFWwindow *,int,int>(struct GLFWwindow *,int,int)const " (??$?RPEAUGLFWwindow@@HH@<lambda_2c254713ac22268a38cefe1aab754c37>@@QEBA@PEAUGLFWwindow@@HH@Z) 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwGetCurrentContext，该符号在函数 "public: __cdecl <lambda_2c254713ac22268a38cefe1aab754c37>::operator()<struct GLFWwindow *,int,int>(struct GLFWwindow *,int,int)const " (??$?RPEAUGLFWwindow@@HH@<lambda_2c254713ac22268a38cefe1aab754c37>@@QEBA@PEAUGLFWwindow@@HH@Z) 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwSwapBuffers，该符号在函数 main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 glfwGetProcAddress，该符号在函数 main 中被引用
+..\deps\libs\glfw3.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+..\deps\libs\glfw3d.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+C:\Users\myzn\source\OpenGL\OpenGL4.5\OpenGL\x64\Debug\OpenGL.exe : fatal error LNK1120: 13 个无法解析的外部命令

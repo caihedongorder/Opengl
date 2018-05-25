@@ -1,0 +1,17 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+    <DefaultName>GLFragmentShader</DefaultName>
+    <Name>GLFragmentShader</Name>
+    <Description>GLFragmentShader</Description>
+    <ProjectType>VC</ProjectType>
+    <SortOrder>10</SortOrder>
+    <CustomParameters>  
+		<CustomParameter Name="$color1$" Value="Red"/>  
+		<CustomParameter Name="$color2$" Value="Blue "/>  
+	</CustomParameters>  
+  </TemplateData>
+  <TemplateContent>
+    <References />
+    <ProjectItem SubType="Code" TargetFileName="$fileinputname$.frag" ReplaceParameters="true">test1.frag</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

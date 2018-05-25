@@ -1,0 +1,18 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+    <DefaultName>OpenGlDemo</DefaultName>
+    <Name>OpenGlDemo</Name>
+    <Description>OpenGl Demo</Description>
+    <ProjectType>VC</ProjectType>
+    <SortOrder>10</SortOrder>
+    <Icon Package="{976cf7d5-2a72-47a3-9e46-5b7c3db95f17}" ID="600"/>
+	<CustomParameters>  
+		<CustomParameter Name="$color1$" Value="Red"/>  
+		<CustomParameter Name="$color2$" Value="Blue "/>  
+	</CustomParameters>  
+  </TemplateData>
+  <TemplateContent>
+    <References />
+    <ProjectItem SubType="Code" TargetFileName="$fileinputname$.hpp" ReplaceParameters="true">TriangleDemo.hpp</ProjectItem>
+  </TemplateContent>
+</VSTemplate>
