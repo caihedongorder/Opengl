@@ -51,6 +51,12 @@
     <ClInclude Include="Image.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TransformDemo.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleTexture.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -80,6 +86,18 @@
       <Filter>shaders\demo</Filter>
     </None>
     <None Include="shaders\demo\texture.vert">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\transformDemo.vert">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\transformDemo.frag">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\DoubleTexture.vert">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\DoubleTexture.frag">
       <Filter>shaders\demo</Filter>
     </None>
   </ItemGroup>

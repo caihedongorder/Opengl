@@ -1,6 +1,12 @@
 #pragma once
-#include "RenderDemoBase.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "Image.hpp"
 #include "ShaderUtil.hpp"
+#include "RenderDemoBase.hpp"
+
+
 
 class $safeitemname$ : public RenderDemoBase
 {

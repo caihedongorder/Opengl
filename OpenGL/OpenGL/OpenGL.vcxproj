@@ -162,6 +162,9 @@
     <ClInclude Include="ColorfulTriangle.hpp">
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="DoubleTexture.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="FileUtil.hpp" />
     <ClInclude Include="Image.hpp" />
     <ClInclude Include="RenderDemoBase.hpp" />
@@ -169,6 +172,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="TransformDemo.hpp">
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="TriangleDemo.hpp" />
@@ -195,8 +201,20 @@
     <None Include="shaders\demo\colorful.vert">
       <SubType>Code</SubType>
     </None>
+    <None Include="shaders\demo\DoubleTexture.frag">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="shaders\demo\DoubleTexture.vert">
+      <SubType>Code</SubType>
+    </None>
     <None Include="shaders\demo\texture.frag" />
     <None Include="shaders\demo\texture.vert" />
+    <None Include="shaders\demo\transformDemo.frag">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="shaders\demo\transformDemo.vert">
+      <SubType>Code</SubType>
+    </None>
     <None Include="shaders\test\test1.frag" />
     <None Include="shaders\test\test1.vert" />
   </ItemGroup>
