@@ -159,7 +159,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Axis.hpp" />
+    <ClInclude Include="Billboard.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp" />
     <ClInclude Include="ColorfulTriangle.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="CubeDemo.hpp">
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="DoubleTexture.hpp">
@@ -167,13 +175,16 @@
     </ClInclude>
     <ClInclude Include="FileUtil.hpp" />
     <ClInclude Include="Image.hpp" />
+    <ClInclude Include="Quat.hpp" />
     <ClInclude Include="RenderDemoBase.hpp" />
+    <ClInclude Include="Rotator.hpp" />
     <ClInclude Include="ShaderUtil.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.hpp">
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Transform.hpp" />
     <ClInclude Include="TransformDemo.hpp">
       <SubType>Code</SubType>
     </ClInclude>
@@ -201,6 +212,8 @@
     <None Include="shaders\demo\colorful.vert">
       <SubType>Code</SubType>
     </None>
+    <None Include="shaders\demo\CubeDemo.frag" />
+    <None Include="shaders\demo\CubeDemo.vert" />
     <None Include="shaders\demo\DoubleTexture.frag">
       <SubType>Code</SubType>
     </None>

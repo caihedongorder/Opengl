@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="shaders">
       <UniqueIdentifier>{ac529d9b-5a1d-4c71-9dfe-f25c53b1d434}</UniqueIdentifier>
     </Filter>
@@ -57,6 +53,27 @@
     <ClInclude Include="DoubleTexture.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CubeDemo.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Billboard.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Rotator.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Quat.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -98,6 +115,12 @@
       <Filter>shaders\demo</Filter>
     </None>
     <None Include="shaders\demo\DoubleTexture.frag">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\CubeDemo.frag">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\CubeDemo.vert">
       <Filter>shaders\demo</Filter>
     </None>
   </ItemGroup>

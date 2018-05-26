@@ -99,7 +99,7 @@ public:
 
 		glUseProgram(program);
 		glUniform1i(textureLocation0, 0);
-		glUniform1i(textureLocation0, 1);
+		glUniform1i(textureLocation1, 1);
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
