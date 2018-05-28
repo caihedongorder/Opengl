@@ -46,6 +46,7 @@ public:
 	const glm::mat4& getProjectionMatrix() const { Update(); return ProjectionMatrix; };
 	const glm::mat4& getViewProjectionMatrix() const { Update(); return ViewProjectionMatrix; };
 
+	static Camera* GetCamera() { return GetDefaultCamera(); }
 	static Camera* GetDefaultCamera() { static Camera _sCam; return &_sCam; }
 private:
 	void Update() const {

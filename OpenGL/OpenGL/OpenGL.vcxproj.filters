@@ -74,6 +74,15 @@
     <ClInclude Include="Axis.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ModelBase.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeModel.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeModelDemo.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,6 +130,12 @@
       <Filter>shaders\demo</Filter>
     </None>
     <None Include="shaders\demo\CubeDemo.vert">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\Cube.frag">
+      <Filter>shaders\demo</Filter>
+    </None>
+    <None Include="shaders\demo\Cube.vert">
       <Filter>shaders\demo</Filter>
     </None>
   </ItemGroup>

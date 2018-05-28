@@ -83,7 +83,7 @@ public:
 		float CamX = Radus * cos(Angle);
 		float CamY = Radus * sin(Angle);
 		float CamZ = Radus * sin(Angle);
-		Transform& CamTransform = Camera::GetDefaultCamera()->GetCameraTransform();
+		Transform& CamTransform = Camera::GetCamera()->GetCameraTransform();
 		glm::vec3 CamLocation = glm::vec3(CamX, CamY , CamZ);
 		static glm::vec3 InitCamLocation = CamLocation;
 		CamTransform.SetTranslation(CamLocation);
@@ -96,7 +96,7 @@ public:
 		//glm::mat4 mvp = Camera::GetDefaultCamera()->getProjectionMatrix() * viewMat * modelTransform.GetTransformMatrix();
 
 		//modelTransform.SetRotator(Rotator(Angle *0,0,glm::degrees(Angle)));
-		glm::mat4 mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform.GetTransformMatrixWithScale();
+		glm::mat4 mvp = Camera::GetCamera()->getViewProjectionMatrix()* modelTransform.GetTransformMatrixWithScale();
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glBindVertexArray(VAO);
@@ -106,7 +106,7 @@ public:
 		//绘制第二个多边形
 		glUseProgram(program);
 		modelTransform1.SetScale(glm::vec3(2, 2, 2));
-		mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform1.GetTransformMatrixWithScale();
+		mvp = Camera::GetCamera()->getViewProjectionMatrix()* modelTransform1.GetTransformMatrixWithScale();
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glBindVertexArray(VAO);

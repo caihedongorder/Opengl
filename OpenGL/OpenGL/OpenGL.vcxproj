@@ -170,11 +170,16 @@
     <ClInclude Include="CubeDemo.hpp">
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="CubeModel.hpp" />
+    <ClInclude Include="CubeModelDemo.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="DoubleTexture.hpp">
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="FileUtil.hpp" />
     <ClInclude Include="Image.hpp" />
+    <ClInclude Include="ModelBase.hpp" />
     <ClInclude Include="Quat.hpp" />
     <ClInclude Include="RenderDemoBase.hpp" />
     <ClInclude Include="Rotator.hpp" />
@@ -212,6 +217,8 @@
     <None Include="shaders\demo\colorful.vert">
       <SubType>Code</SubType>
     </None>
+    <None Include="shaders\demo\Cube.frag" />
+    <None Include="shaders\demo\Cube.vert" />
     <None Include="shaders\demo\CubeDemo.frag" />
     <None Include="shaders\demo\CubeDemo.vert" />
     <None Include="shaders\demo\DoubleTexture.frag">
