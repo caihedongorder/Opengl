@@ -13,7 +13,8 @@ public:
 	}
 
 	void SetDirection(const glm::vec3& InDirection, EAxis::Type InAxis = EAxis::Z) {
-		rotator.SetDirection(InAxis, InDirection);
+		rotator.SetDirection(InDirection, InAxis);
+		matrixDirty = true;
 	}
 
 	void Move(const glm::vec3& InTranslation) {

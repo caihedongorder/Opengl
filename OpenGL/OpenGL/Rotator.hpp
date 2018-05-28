@@ -43,10 +43,8 @@ public:
 	/*
 		假定 Z轴为向前方向
 	*/
-	void SetDirection(const glm::vec3& InDirection) {
-		SetDirection(EAxis::Z, InDirection);
-	}
-	void SetDirection(EAxis::Type InAxis, const glm::vec3& InAxisDir, const glm::vec3& up = glm::vec3(0, 1, 0)) {
+
+	void SetDirection(const glm::vec3& InAxisDir, EAxis::Type InAxis = EAxis::Z, const glm::vec3& up = glm::vec3(0, 1, 0)) {
 		glm::mat3 mat(1.0);
 		auto Axis = glm::normalize(InAxisDir);
 		
@@ -57,20 +55,20 @@ public:
 		if (InAxis == EAxis::X)
 		{
 			rightDir = Axis;
-			forwardDir = glm::normalize(glm::cross(rightDir, upDir));
-			upDir = glm::normalize(glm::cross(forwardDir, rightDir));
+			forwardDir = glm::normalize(glm::cross(upDir,rightDir));
+			upDir = glm::normalize(glm::cross(rightDir, forwardDir));
 		}
 		else if (InAxis == EAxis::Y)
 		{
-			rightDir = glm::normalize(glm::cross(upDir, Axis));
+			rightDir = glm::normalize(glm::cross(Axis, upDir));
 			upDir = Axis;
-			forwardDir = glm::normalize(glm::cross(rightDir, upDir));
+			forwardDir = glm::normalize(glm::cross(upDir, rightDir));
 		}
 		else if(InAxis == EAxis::Z)
 		{
 			forwardDir = Axis;
-			rightDir = glm::normalize(glm::cross(upDir, forwardDir));
-			upDir = glm::normalize(glm::cross(forwardDir, rightDir));
+			rightDir = glm::normalize(glm::cross(forwardDir,upDir));
+			upDir = glm::normalize(glm::cross(rightDir,forwardDir));
 		}
 		transformMatrix4X4 = glm::mat4(1.0f);
 
@@ -135,5 +133,5 @@ private:
 
 	mutable glm::mat4 transformMatrix4X4;
 	mutable glm::mat3 transformMatrix3X3;
-	mutable bool matrixDirty;
+	mutable bool matrixDirty = true;
 };

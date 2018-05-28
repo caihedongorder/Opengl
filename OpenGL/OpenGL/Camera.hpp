@@ -66,19 +66,19 @@ private:
 			static glm::mat3 DefaultCamMatrix = DefualtCamRotator.GetMaxtrix3X3();
 			auto rotateMatrix = DefaultCamMatrix * glm::transpose( camTransform.GetRotator().GetMaxtrix3X3() );
 #endif
-			
 			auto rotateMatrix = camTransform.GetRotator().GetMaxtrix3X3();
 			rotateMatrix[0][2] = -rotateMatrix[0][2];
 			rotateMatrix[1][2] = -rotateMatrix[1][2];
 			rotateMatrix[2][2] = -rotateMatrix[2][2];
 
+			//rotateMatrix = glm::transpose(camTransform.GetRotator().GetMaxtrix3X3());
+
+			ViewMatrix = glm::mat4(rotateMatrix);
+
 			ViewMatrix[3][0] = glm::dot(glm::vec3(rotateMatrix[0][0], rotateMatrix[1][0], rotateMatrix[2][0]), -camTransform.GetTranslation());
 			ViewMatrix[3][1] = glm::dot(glm::vec3(rotateMatrix[0][1], rotateMatrix[1][1], rotateMatrix[2][1]), -camTransform.GetTranslation());
 			ViewMatrix[3][2] = glm::dot(glm::vec3(rotateMatrix[0][2], rotateMatrix[1][2], rotateMatrix[2][2]), -camTransform.GetTranslation());
-
-			auto translateInvs = glm::translate(glm::mat4(1.0f),-camTransform.GetTranslation());
-			ViewMatrix = glm::mat4(rotateMatrix)*translateInvs;
-
+			
 			ViewProjectionMatrixDirty = true;
 		}
 

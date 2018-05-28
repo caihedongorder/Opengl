@@ -7,6 +7,8 @@
 #include "RenderDemoBase.hpp"
 #include "Camera.hpp"
 #include "Transform.hpp"
+#include <glm/gtx/matrix_query.inl>
+#include <glm/gtc/constants.hpp>
 
 class Billboard : public RenderDemoBase
 {
@@ -59,6 +61,7 @@ public:
 		program = ShaderUtil::CreateProgram("shaders/demo/CubeDemo.vert", "shaders/demo/CubeDemo.frag");
 		mvpLocation = glGetUniformLocation(program, "mvp");
 		modelTransform.SetTranslation(glm::vec3(0, 0, 0));
+		modelTransform1.SetTranslation(glm::vec3(0, 5, 0));
 		return true;
 	}
 	virtual void OnUnInit() override
@@ -76,31 +79,45 @@ public:
 		glUseProgram(program);
 
 		//计算相机位置
-		float Angle = glfwGetTime();
+		float Angle = glfwGetTime()+2.3f;
 		float CamX = Radus * cos(Angle);
 		float CamY = Radus * sin(Angle);
 		Transform& CamTransform = Camera::GetDefaultCamera()->GetCameraTransform();
-		glm::vec3 CamLocation = glm::vec3(CamX, 1, CamY);
+		glm::vec3 CamLocation = glm::vec3(CamX, 10, CamY);
+		static glm::vec3 InitCamLocation = CamLocation;
 		CamTransform.SetTranslation(CamLocation);
-		CamTransform.SetDirection(glm::vec3(0, 0, 0) - CamLocation);
+		CamTransform.SetDirection(-CamLocation);
 
-		auto CamMatrix = Camera::GetDefaultCamera()->getViewMatrix();
-		//auto CamMatrix1 = glm::lookAt(CamLocation, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+		//modelTransform.SetScale(glm::vec3(4, 4, 4) * (sin(float(glfwGetTime())/2.0f *2 * glm::pi<float>())+2.0f)/3.0f);
+		modelTransform.SetScale(glm::vec3(4, 4, 4));
+		modelTransform.SetDirection(CamLocation);
+		//auto viewMat = glm::lookAt(CamLocation, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+		//glm::mat4 mvp = Camera::GetDefaultCamera()->getProjectionMatrix() * viewMat * modelTransform.GetTransformMatrix();
 
-		auto v1 = CamMatrix * glm::vec4(0, 0, 0, 1);
-		//auto v2 = CamMatrix1 * glm::vec4(0, 0, 0, 1);
-
+		//modelTransform.SetRotator(Rotator(Angle *0,0,glm::degrees(Angle)));
 		glm::mat4 mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform.GetTransformMatrix();
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 		glUseProgram(0);
+
+		//绘制第二个多边形
+		glUseProgram(program);
+		modelTransform1.SetScale(glm::vec3(2, 2, 2));
+		mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform1.GetTransformMatrix();
+		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
+
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+		glUseProgram(0);
+
 	}
 private:
 	GLuint program = 0;
 	GLuint VAO = 0;
 	GLuint mvpLocation;
 	Transform modelTransform;
+	Transform modelTransform1;
 	float Radus = 10.0f;
 };
