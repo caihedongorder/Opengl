@@ -91,7 +91,7 @@ public:
 
 		//modelTransform.SetScale(glm::vec3(4, 4, 4) * (sin(float(glfwGetTime())/2.0f *2 * glm::pi<float>())+2.0f)/3.0f);
 		modelTransform.SetScale(glm::vec3(4, 4, 4));
-		//modelTransform.SetDirection(CamLocation);
+		modelTransform.SetDirection(CamLocation);
 		//auto viewMat = glm::lookAt(CamLocation, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 		//glm::mat4 mvp = Camera::GetDefaultCamera()->getProjectionMatrix() * viewMat * modelTransform.GetTransformMatrix();
 
