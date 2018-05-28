@@ -79,23 +79,24 @@ public:
 		glUseProgram(program);
 
 		//计算相机位置
-		float Angle = glfwGetTime()+2.3f;
+		float Angle = glfwGetTime();
 		float CamX = Radus * cos(Angle);
 		float CamY = Radus * sin(Angle);
+		float CamZ = Radus * sin(Angle);
 		Transform& CamTransform = Camera::GetDefaultCamera()->GetCameraTransform();
-		glm::vec3 CamLocation = glm::vec3(CamX, 10, CamY);
+		glm::vec3 CamLocation = glm::vec3(CamX, CamY , CamZ);
 		static glm::vec3 InitCamLocation = CamLocation;
 		CamTransform.SetTranslation(CamLocation);
 		CamTransform.SetDirection(-CamLocation);
 
 		//modelTransform.SetScale(glm::vec3(4, 4, 4) * (sin(float(glfwGetTime())/2.0f *2 * glm::pi<float>())+2.0f)/3.0f);
 		modelTransform.SetScale(glm::vec3(4, 4, 4));
-		modelTransform.SetDirection(CamLocation);
+		//modelTransform.SetDirection(CamLocation);
 		//auto viewMat = glm::lookAt(CamLocation, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 		//glm::mat4 mvp = Camera::GetDefaultCamera()->getProjectionMatrix() * viewMat * modelTransform.GetTransformMatrix();
 
 		//modelTransform.SetRotator(Rotator(Angle *0,0,glm::degrees(Angle)));
-		glm::mat4 mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform.GetTransformMatrix();
+		glm::mat4 mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform.GetTransformMatrixWithScale();
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glBindVertexArray(VAO);
@@ -105,7 +106,7 @@ public:
 		//绘制第二个多边形
 		glUseProgram(program);
 		modelTransform1.SetScale(glm::vec3(2, 2, 2));
-		mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform1.GetTransformMatrix();
+		mvp = Camera::GetDefaultCamera()->getViewProjectionMatrix()* modelTransform1.GetTransformMatrixWithScale();
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 
 		glBindVertexArray(VAO);

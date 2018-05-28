@@ -50,15 +50,22 @@ public:
 		update();
 		return rotator.GetMaxtrix4X4();
 	}
-	glm::mat4 GetTransformMatrix() const {
+	glm::mat4 GetTransformMatrixWithScale() const {
 		update();
-		return transformMatrix;
+		return transformMatrixWithScale;
 	}
-	glm::mat4 GetTransformMatrixInverse() const {
+	glm::mat4 GetTransformMatrixWithScaleInverse() const {
 		update();
-		return glm::inverse(transformMatrix);
+		return transformMatrixWithScaleInvserse;
 	}
-
+	glm::mat4 GetTransformMatrixWithoutScale() const {
+		update();
+		return transformMatrixWithoutScale;
+	}
+	glm::mat4 GetTransformMatrixWithoutScaleInverse() const {
+		update();
+		return transformMatrixWithoutScaleInvserse;
+	}
 	bool MatrixIsDirty() const { return matrixDirty; }
 private:
 	glm::vec3 translation;
@@ -68,11 +75,27 @@ private:
 	void update() const {
 		if (matrixDirty)
 		{
-			transformMatrix = rotator.GetMaxtrix4X4()* glm::scale(scale);
-			transformMatrix[3] = glm::vec4(translation,1.0f);
+			auto rotateMat3 = rotator.GetMaxtrix3X3();
+			auto rotateMat3Inv = rotator.GetMaxtrix3X3Inverse();
+
+			transformMatrixWithScale = glm::mat4(rotateMat3)* glm::scale(scale);
+			transformMatrixWithScale[3] = glm::vec4(translation, 1.0f);
+
+			transformMatrixWithoutScale = glm::mat4(rotateMat3);
+			transformMatrixWithoutScale[3] = glm::vec4(translation, 1.0f);
+
+			transformMatrixWithScaleInvserse = glm::mat4(rotateMat3Inv)* glm::scale(glm::vec3(1, 1, 1) / scale);
+			transformMatrixWithScaleInvserse[3] = glm::vec4( glm::mat3(transformMatrixWithScaleInvserse) * (-translation) ,1.0f );
+
+			transformMatrixWithoutScaleInvserse = glm::mat4(rotateMat3Inv);
+			transformMatrixWithoutScaleInvserse[3] = glm::vec4(glm::mat3(transformMatrixWithoutScaleInvserse) * (-translation), 1.0f);
+
 			matrixDirty = false;
 		}
 	}
-	mutable glm::mat4 transformMatrix;
+	mutable glm::mat4 transformMatrixWithScale;
+	mutable glm::mat4 transformMatrixWithoutScale;
+	mutable glm::mat4 transformMatrixWithScaleInvserse;
+	mutable glm::mat4 transformMatrixWithoutScaleInvserse;
 	mutable bool matrixDirty = true;
 };
