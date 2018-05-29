@@ -25,7 +25,6 @@ public:
 		Camera::GetCamera()->GetCameraTransform().SetDirection(-camLocation);
 
 		//light
-
 		//cube
 
 		cube.GetTransform().SetScale(glm::vec3(4, 4, 4));
@@ -42,7 +41,7 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		float angle = glfwGetTime();
-		auto lightlocation = glm::vec3(radius*glm::sin(angle), 5 * glm::sin(angle) , radius*glm::cos(angle));
+		auto lightlocation = glm::vec3(radius*glm::sin(angle), 10 , radius*glm::cos(angle));
 		light.GetTransform().SetTranslation(lightlocation);
 		light.GetTransform().SetDirection(-lightlocation);
 		light.OnRender();

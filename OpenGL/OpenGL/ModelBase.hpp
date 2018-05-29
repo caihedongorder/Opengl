@@ -17,6 +17,7 @@ public:
 		mLocation = glGetUniformLocation(program, "m");
 		lightColorLocation = glGetUniformLocation(program, "lightColor");
 		lightPositionLocation = glGetUniformLocation(program, "lightPosition");
+		viewPositionLocation = glGetUniformLocation(program, "viewPosition");
 		return true;
 	}
 	virtual void OnRender(){}
@@ -29,6 +30,7 @@ public:
 		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
 		glUniformMatrix4fv(mLocation, 1, GL_FALSE, glm::value_ptr(transform.GetTransformMatrixWithScale()));
 		glUniform4fv(lightColorLocation, 1, glm::value_ptr(lightColor));
+		glUniform3fv(viewPositionLocation, 1, glm::value_ptr(Camera::GetCamera()->GetCameraTransform().GetTranslation()));
 	}
 	void UnUseProgram() { glUseProgram(0); }
 
@@ -45,6 +47,7 @@ protected:
 	GLuint mLocation;
 	GLuint lightColorLocation;
 	GLuint lightPositionLocation;
+	GLuint viewPositionLocation;
 	glm::vec4 lightColor = glm::vec4(1, 1, 1, 1);
 
 };
