@@ -34,20 +34,22 @@ public:
 		GLuint VertShader = CreateVertexShader(vertFile, GL_VERTEX_SHADER);
 		if (!VertShader)
 		{
-			return VertShader;
+			return 0;
 		}
 		GLuint FragShader = CreateVertexShader(fragFile, GL_FRAGMENT_SHADER);
 		if (!FragShader)
 		{
-			return FragShader;
+			return 0;
 		}
 
 		GLuint program = glCreateProgram();
 		glAttachShader(program,VertShader);
 		glAttachShader(program,FragShader);
 		glLinkProgram(program);
+		auto error = glGetError();
 		GLint bSuccess;
 		glGetProgramiv(program, GL_LINK_STATUS, &bSuccess);
+		error = glGetError();
 		if(!bSuccess)
 		{
 			char LinkInfo[1024];

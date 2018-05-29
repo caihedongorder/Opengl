@@ -179,6 +179,10 @@
     </ClInclude>
     <ClInclude Include="FileUtil.hpp" />
     <ClInclude Include="Image.hpp" />
+    <ClInclude Include="LightDemo.hpp">
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="LightModel.hpp" />
     <ClInclude Include="ModelBase.hpp" />
     <ClInclude Include="Quat.hpp" />
     <ClInclude Include="RenderDemoBase.hpp" />
@@ -225,6 +229,12 @@
       <SubType>Code</SubType>
     </None>
     <None Include="shaders\demo\DoubleTexture.vert">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="shaders\demo\LightModel.frag">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="shaders\demo\LightModel.vert">
       <SubType>Code</SubType>
     </None>
     <None Include="shaders\demo\texture.frag" />

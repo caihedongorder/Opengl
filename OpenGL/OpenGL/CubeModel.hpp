@@ -125,17 +125,74 @@ public:
 			glm::vec2(0.0f,1.0f),
 			glm::vec2(1.0f,1.0f),
 		};
-		
+		glm::vec3 normals[] = {
+			//front
+			glm::vec3(0,0,1),
+			glm::vec3(0,0,1),
+			glm::vec3(0,0,1),
+
+			glm::vec3(0,0,1),
+			glm::vec3(0,0,1),
+			glm::vec3(0,0,1),
+			
+
+			//back
+			glm::vec3(0,0,-1),
+			glm::vec3(0,0,-1),
+			glm::vec3(0,0,-1),
+
+			glm::vec3(0,0,-1),
+			glm::vec3(0,0,-1),
+			glm::vec3(0,0,-1),
+
+			//right
+			glm::vec3(1,0,0),
+			glm::vec3(1,0,0),
+			glm::vec3(1,0,0),
+
+			glm::vec3(1,0,0),
+			glm::vec3(1,0,0),
+			glm::vec3(1,0,0),
+
+
+			//left
+			glm::vec3(-1,0,0),
+			glm::vec3(-1,0,0),
+			glm::vec3(-1,0,0),
+
+			glm::vec3(-1,0,0),
+			glm::vec3(-1,0,0),
+			glm::vec3(-1,0,0),
+
+			//top
+			glm::vec3(0,1,0),
+			glm::vec3(0,1,0),
+			glm::vec3(0,1,0),
+
+			glm::vec3(0,1,0),
+			glm::vec3(0,1,0),
+			glm::vec3(0,1,0),
+
+
+			//bottom
+			glm::vec3(0,-1,0),
+			glm::vec3(0,-1,0),
+			glm::vec3(0,-1,0),
+
+			glm::vec3(0,-1,0),
+			glm::vec3(0,-1,0),
+			glm::vec3(0,-1,0),
+		};
 		struct VertexData
 		{
 			glm::vec3 position;
+			glm::vec3 normal;
 			glm::vec2 uv;
 		};
 		std::vector<VertexData> vertexData;
 		for (int i = 0 ; i < sizeof(pts) / sizeof(pts[0]) ; ++i)
 		{
-			
-			vertexData.push_back({ pts[i],texCoords[i] });
+			vertexData.push_back({ pts[i],normals[i],texCoords[i] });
 		}
 
 		//´´½¨VBO
@@ -145,8 +202,10 @@ public:
 		glBufferData(GL_ARRAY_BUFFER, sizeof(VertexData)*vertexData.size(), &vertexData[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (void*)(0));
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (void*)(3* sizeof(float)));
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (void*)(3* sizeof(float)));
 		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (void*)(6* sizeof(float)));
+		glEnableVertexAttribArray(2);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
@@ -156,8 +215,13 @@ public:
 	virtual bool OnGPUProgram() override
 	{
 		program = ShaderUtil::CreateProgram("shaders/demo/Cube.vert", "shaders/demo/Cube.frag");
-		mvpLocation = glGetUniformLocation(program, "mvp");
+		if (!program)
+		{
+			return false;
+		}
+		glUseProgram(program);
 		textureLocation = glGetUniformLocation(program, "base");
+		ModelBase::OnGPUProgram();
 
 		Image img = Image::LoadFromFile("asserts/images/terrains/1.jpg");
 		if (!img.IsValid())
@@ -180,21 +244,17 @@ public:
 	}
 	virtual void OnRender() override
 	{
-		glUseProgram(program);
-		glm::mat4 mvp = Camera::GetCamera()->getViewProjectionMatrix()* transform.GetTransformMatrixWithScale();
-		glUniformMatrix4fv(mvpLocation, 1, GL_FALSE, glm::value_ptr(mvp));
+		UseProgram();
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glUniform1i(textureLocation, 0);
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glUseProgram(0);
+		UnUseProgram();
+
 	}
 private:
-	GLuint program = 0;
-	GLuint VAO = 0;
-	GLuint mvpLocation;
-	GLuint texture;
 	GLuint textureLocation;
+	GLuint texture;
 };
