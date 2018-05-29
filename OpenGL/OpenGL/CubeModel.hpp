@@ -223,7 +223,7 @@ public:
 		textureLocation = glGetUniformLocation(program, "base");
 		ModelBase::OnGPUProgram();
 
-		Image img = Image::LoadFromFile("asserts/images/terrains/1.jpg");
+		Image img = Image::LoadFromFile("asserts/images/blocks/2.jpg");
 		if (!img.IsValid())
 			return false;
 

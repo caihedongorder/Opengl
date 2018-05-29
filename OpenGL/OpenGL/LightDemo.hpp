@@ -27,8 +27,13 @@ public:
 		//light
 		//cube
 
-		cube.GetTransform().SetScale(glm::vec3(4, 4, 4));
+		cube.GetTransform().SetScale(glm::vec3(100, 1, 100));
+		cube.SetMaterialShininess(0.6);
+		cube.SetUVRepeatCount(10);
 		
+		cube.SetLightDiffuse(glm::vec3(1, 1, 1));
+		cube.SetLightSpecular(glm::vec3(1, 0, 0));
+
 		return true;
 	}
 	virtual void OnUnInit() override
